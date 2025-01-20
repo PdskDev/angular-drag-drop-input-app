@@ -1,0 +1,23 @@
+<div class="modal-container">
+  <div class="modal-content">
+    <button class="close-button" (click)="close()">×</button>
+    <div cdkDropList class="input-list" (cdkDropListDropped)="drop($event)">
+      <div
+        *ngFor="let input of inputs; let i = index"
+        cdkDrag
+        cdkDragBoundary=".modal-content"
+      >
+        <div class="input-item">
+          <input type="text" [(ngModel)]="inputs[i]" placeholder="Enter text" />
+          <button (click)="removeInput(i)">×</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button (click)="addInput()" [disabled]="inputs.length >= 10">
+        Add Input
+      </button>
+    </div>
+  </div>
+</div>
